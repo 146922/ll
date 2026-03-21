@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的相册</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+        }
+
+        nav {
+            background: #5b7083;
+            padding: 0 20px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 999;
+        }
+
+        .logo {
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 14px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            color: #e3efff;
+        }
+
+        .album-title {
+            margin-top: 90px;
+            text-align: center;
+            font-size: 24px;
+            color: #444f5a;
+        }
+
+        .album-grid {
+            max-width: 1400px;
+            margin: 30px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 16px;
+        }
+
+        .album-item {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(100, 120, 150, 0.1);
+        }
+
+        .album-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .album-item p {
+            padding: 12px;
+            text-align: center;
+            color: #555;
+        }
+
+        footer {
+            background: #5b7083;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo">我的生活记录</div>
+    <div class="nav-links">
+        <a href=" ">首页</a >
+        <a href="album.html">相册</a >
+        <a href="#">日常</a >
+        <a href="#">关于我</a >
+    </div>
+</nav>
+
+<h1 class="album-title">我的全部相册</h1>
+
+<div class="album-grid">
+    <div class="album-item">
+        <img src="top.jpg" alt="">
+        <p>海边的温柔时刻</p >
+    </div>
+    <div class="album-item">
+        <img src="pic1.jpg" alt="">
+        <p>趣味像素自拍</p >
+    </div>
+    <div class="album-item">
+        <img src="pic2.jpg" alt="">
+        <p>现场观赛时刻</p >
+    </div>
+</div>
+
+<footer>© 2026 我的生活记录</footer>
+<script src="script.js"></script>
+</body>
+</html>

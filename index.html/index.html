@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的生活记录</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+        }
+
+        /* 导航栏 */
+        nav {
+            background: #f8f9fa;
+            padding: 0 20px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 999;
+        }
+
+        .logo {
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 14px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            color: #e3efff;
+        }
+
+        /* 顶部大图 */
+        .banner {
+            margin-top: 60px;
+            width: 100%;
+            height: 280px;
+            background: url("top.jpg") center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(0,0,0,0.4);
+        }
+
+        /* 内容 */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 22px;
+            color: #444f5a;
+        }
+
+        /* 卡片 */
+        .img-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 16px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(100, 120, 150, 0.1);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card p {
+            padding: 12px;
+            text-align: center;
+            color: #555;
+        }
+
+        footer {
+            background: #5b7083;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            .banner {
+                height: 220px;
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo">我的生活记录</div>
+    <div class="nav-links">
+        <a href=" ">首页</a >
+        <a href="album.html">相册</a >
+        <a href="#">日常</a >
+        <a href="#">关于我</a >
+    </div>
+</nav>
+
+<div class="banner">
+    海边的温柔时刻
+</div>
+
+<div class="container">
+    <h2 class="title">我的生活碎片</h2>
+    <div class="img-box">
+        <div class="card">
+            <img src="pic1.jpg" alt="">
+            <p>趣味像素自拍</p >
+        </div>
+        <div class="card">
+            <img src="pic2.jpg" alt="">
+            <p>现场观赛时刻</p >
+        </div>
+        <div class="card">
+            <img src="pic3.jpg" alt="">
+            <p>更多精彩瞬间</p >
+        </div>
+    </div>
+</div>
+
+<footer>© 2026 我的生活记录</footer>
+<script src="script.js"></script>
+</body>
+</html>
