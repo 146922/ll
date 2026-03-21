@@ -12,12 +12,25 @@
             font-family: "Microsoft YaHei", sans-serif;
         }
 
+        /* 全局背景：海边日落图 */
         body {
-            background-color: #f8f9fa;
+            background: url("sunset-bg.jpg") center center / cover no-repeat fixed;
+            min-height: 100vh;
+        }
+
+        /* 半透明白遮罩 */
+        .page-mask {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            z-index: -1;
         }
 
         nav {
-            background: #5b7083;
+            background: rgba(91, 112, 131, 0.9);
             padding: 0 20px;
             height: 60px;
             display: flex;
@@ -86,45 +99,128 @@
         }
 
         footer {
-            background: #5b7083;
+            background: rgba(91, 112, 131, 0.9);
             color: white;
             text-align: center;
             padding: 20px;
             margin-top: 30px;
             font-size: 14px;
         }
+/* 可爱俏皮联系弹窗 */
+.contact-modal {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-box {
+  background: #fff;
+  padding: 32px 24px;
+  border-radius: 24px;
+  width: 90%;
+  max-width: 380px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border: 2px solid #f8e8f0;
+  position: relative;
+}
+
+.contact-box::before {
+  content: "🌟";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 22px;
+}
+
+.contact-box h3 {
+  margin-bottom: 20px;
+  color: #ff7597;
+  font-size: 20px;
+}
+
+.contact-box p {
+  margin: 12px 0;
+  font-size: 15px;
+  color: #555;
+  background: #fef4f8;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.close-btn {
+  margin-top: 20px;
+  padding: 10px 24px;
+  background: #ff9bbb;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.close-btn:hover {
+  background: #ff7597;
+}
     </style>
 </head>
 <body>
+    <nav>
+        <div class="logo">我的生活记录</div>
+        <div class="nav-links">
+            <a href="index.html">首页</a >
+            <a href="album.html">相册</a >
+            <a href="daily.html">日常</a >
+             <a href="javascript:showContact()">我的联系</a >
+        </div>
+    </nav>
 
-<nav>
-    <div class="logo">我的生活记录</div>
-    <div class="nav-links">
-        <a href=" ">首页</a >
-        <a href="album.html">相册</a >
-        <a href="#">日常</a >
-        <a href="#">关于我</a >
-    </div>
-</nav>
+    <h1 class="album-title">我的全部相册</h1>
 
-<h1 class="album-title">我的全部相册</h1>
-
-<div class="album-grid">
-    <div class="album-item">
-        <img src="top.jpg" alt="">
-        <p>海边的温柔时刻</p >
+    <div class="album-grid">
+        <div class="album-item">
+            <img src="top.jpg" alt="">
+            <p>海边的温柔时刻</p >
+        </div>
+        <div class="album-item">
+            <img src="pic1.jpg" alt="">
+            <p>趣味像素自拍</p >
+        </div>
+        <div class="album-item">
+            <img src="pic2.jpg" alt="">
+            <p>现场观赛时刻</p >
+        </div>
     </div>
-    <div class="album-item">
-        <img src="pic1.jpg" alt="">
-        <p>趣味像素自拍</p >
-    </div>
-    <div class="album-item">
-        <img src="pic2.jpg" alt="">
-        <p>现场观赛时刻</p >
-    </div>
+    <!-- 联系弹窗 -->
+<div class="contact-modal" id="contactModal">
+  <div class="contact-box">
+    <h3>我的联系方式</h3>
+    <p>QQ：1469228736</p >
+    <p>微信：Loelin-0609</p >
+    <p>电话：15502819278</p >
+    <button class="close-btn" onclick="closeContact()">关闭</button>
+  </div>
 </div>
 
-<footer>© 2026 我的生活记录</footer>
-<script src="script.js"></script>
+    <footer>© 2026 我的生活记录</footer>
+    <script src="ll.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
+<script>
+function showContact() {
+  document.getElementById('contactModal').style.display = 'flex';
+}
+function closeContact() {
+  document.getElementById('contactModal').style.display = 'none';
+}
+</script>
