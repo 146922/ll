@@ -56,3 +56,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+alert("你好 朋友欢迎光临我的个人网页")
