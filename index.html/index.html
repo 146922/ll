@@ -2,331 +2,94 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>我的生活记录</title>
     <style>
-        
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Microsoft YaHei", sans-serif;
-        }
-
-        /* 全局背景：海边日落图 */
-        body {
-            background: url("sunset-bg.jpg") center center / cover no-repeat fixed;
-            min-height: 100vh;
-            margin: 0;
-        }
-
-
+        *{margin:0;padding:0;box-sizing:border-box;font-family:"Microsoft YaHei",sans-serif}
+        body{background:url("sunset-bg.jpg") center/cover no-repeat fixed;min-height:100vh}
         /* 导航栏 */
-        nav {
-            background: rgba(91, 112, 131, 0.9);
-            padding: 0 20px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 999;
-        }
-
-        .logo {
-            color: white;
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 14px;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 14px;
-        }
-
-        .nav-links a:hover {
-            color: #e3efff;
-        }
-
-        /* 顶部大图 */
-        .banner {
-            margin-top: 60px;
-            width: 100%;
-            height: 280px;
-            background: url("top.jpg") center/cover no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 24px;
-            font-weight: bold;
-            text-shadow: 0 0 10px rgba(0,0,0,0.4);
-        }
-
-        /* 内容 */
-        .container {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        .title {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 22px;
-            color: orange;
-        }
-
-        /* 卡片 */
-.img-box {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
-}
-.card img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-}
-
-        .card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(100, 120, 150, 0.1);
-        }
-
-        .card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .card p {
-            padding: 12px;
-            text-align: center;
-            color: #555;
-        }
-
-        footer {
-            background: rgba(91, 112, 131, 0.9);
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 30px;
-            font-size: 14px;
-        }
-
-        @media (max-width: 600px) {
-            .banner {
-                height: 220px;
-                font-size: 20px;
-            }
-        }
-/* 可爱俏皮联系弹窗 */
-.contact-modal {
-  display: none;
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 9999;
-  justify-content: center;
-  align-items: center;
-}
-
-.contact-box {
-  background: #fff;
-  padding: 32px 24px;
-  border-radius: 24px;
-  width: 90%;
-  max-width: 380px;
-  text-align: center;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  border: 2px solid #f8e8f0;
-  position: relative;
-}
-
-.contact-box::before {
-  content: "🌟";
-  position: absolute;
-  top: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 22px;
-}
-
-.contact-box h3 {
-  margin-bottom: 20px;
-  color: #ff7597;
-  font-size: 20px;
-}
-
-.contact-box p {
-  margin: 12px 0;
-  font-size: 15px;
-  color: #555;
-  background: #fef4f8;
-  padding: 10px;
-  border-radius: 12px;
-}
-
-.close-btn {
-  margin-top: 20px;
-  padding: 10px 24px;
-  background: #ff9bbb;
-  color: #fff;
-  font-weight: bold;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.close-btn:hover {
-  background: #ff7597;
-}
-
-/* 弹窗遮罩 */
-.popup-mask {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
-/* 弹窗内容 */
-.popup-box {
-  background: #e09595;
-  width: 280px;
-  padding: 30px 20px;
-  border-radius: 16px;
-  text-align: center;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-}
-.popup-title {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 12px;
-  color: #333;
-}
-.popup-desc {
-  font-size: 15px;
-  color: #666;
-  margin-bottom: 25px;
-}
-.popup-close {
-  padding: 10px 25px;
-  background: #5c9ce6;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 15px;
-}
-.popup-close:hover {
-  background: #4a8fd6;
-}
-
+        nav{background:rgba(91,112,131,0.9);padding:0 20px;height:60px;display:flex;align-items:center;justify-content:space-between;position:fixed;top:0;width:100%;z-index:999}
+        .logo{color:#fff;font-size:18px;font-weight:bold}
+        .nav-links{display:flex;gap:14px}
+        .nav-links a{color:#fff;text-decoration:none;font-size:14px}
+        .nav-links a:hover{color:#e3efff}
+        /* 顶部banner */
+        .banner{margin-top:60px;width:100%;height:280px;background:url("top.jpg") center/cover no-repeat;display:flex;align-items:center;justify-content:center;color:#fff;font-size:24px;font-weight:bold;text-shadow:0 0 10px rgba(0,0,0,0.4)}
+        /* 主体内容 */
+        .container{max-width:1200px;margin:40px auto;padding:0 20px}
+        .title{text-align:center;margin-bottom:20px;font-size:22px;color:orange}
+        .img-box{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+        .card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 3px 10px rgba(100,120,150,0.1)}
+        .card img{width:100%;height:200px;object-fit:cover}
+        .card p{padding:12px;text-align:center;color:#555}
+        /* 页脚 */
+        footer{background:rgba(91,112,131,0.9);color:#fff;text-align:center;padding:20px;margin-top:30px;font-size:14px}
+        /* 联系弹窗 */
+        .contact-modal{display:none;position:fixed;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:9999;justify-content:center;align-items:center}
+        .contact-box{background:#fff;padding:32px 24px;border-radius:24px;width:90%;max-width:380px;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,0.15);border:2px solid #f8e8f0;position:relative}
+        .contact-box::before{content:"🌟";position:absolute;top:-12px;left:50%;transform:translateX(-50%);font-size:22px}
+        .contact-box h3{margin-bottom:20px;color:#ff7597;font-size:20px}
+        .contact-box p{margin:12px 0;font-size:15px;color:#555;background:#fef4f8;padding:10px;border-radius:12px}
+        .close-btn{margin-top:20px;padding:10px 24px;background:#ff9bbb;color:#fff;font-weight:bold;border:none;border-radius:20px;cursor:pointer;transition:.2s}
+        .close-btn:hover{background:#ff7597}
+        /* 欢迎弹窗 */
+        .popup-mask{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:9999}
+        .popup-box{background:#e09595;width:280px;padding:30px 20px;border-radius:16px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,0.2)}
+        .popup-title{font-size:18px;font-weight:bold;margin-bottom:12px;color:#333}
+        .popup-desc{font-size:15px;color:#666;margin-bottom:25px}
+        .popup-close{padding:10px 25px;background:#5c9ce6;color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:15px}
+        .popup-close:hover{background:#4a8fd6}
+        /* 响应式 */
+        @media (max-width:600px){.banner{height:220px;font-size:20px}}
     </style>
 </head>
 <body>
-
-    
-    <!-- 半透明白遮罩 -->
-    <div class="page-mask"></div>
-
     <nav>
         <div class="logo">我的生活记录</div>
         <div class="nav-links">
             <a href=" ">首页</a >
             <a href="album.html">相册</a >
             <a href="daily.html">日常</a >
-             <a href="javascript:showContact()">我的联系</a >
+            <a href="javascript:showContact()">我的联系</a >
         </div>
     </nav>
-
-    <div class="banner">
-        海边的温柔时刻
-    </div>
-
+    <div class="banner">海边的温柔时刻</div>
     <div class="container">
         <h2 class="title">我的生活碎片</h2>
         <div class="img-box">
-            <div class="card">
-                <img src="pic1.jpg" alt="">
-                <p>趣味像素自拍</p >
-            </div>
-            <div class="card">
-                <img src="pic2.jpg" alt="">
-                <p>现场观赛时刻</p >
-            </div>
-            <div class="card">
-                <img src="pic3.jpg" alt="">
-                <p>无聊 寝室拍的</p >
-            </div>
-        </div> 
+            <div class="card"><img src="pic1.jpg" alt=""><p>趣味像素自拍</p ></div>
+            <div class="card"><img src="pic2.jpg" alt=""><p>现场观赛时刻</p ></div>
+            <div class="card"><img src="pic3.jpg" alt=""><p>无聊 寝室拍的</p ></div>
+        </div>
     </div>
-        <!-- 联系弹窗 -->
-<div class="contact-modal" id="contactModal">
-  <div class="contact-box">
-    <h3>我的联系方式</h3>
-    <p>QQ:1469228736</p >
-    <p>微信:Loelin-0609</p >
-    <p>电话:15502819278</p >
-    <button class="close-btn" onclick="closeContact()">关闭</button>
-  </div>
-</div>
-
+    <!-- 联系弹窗 -->
+    <div class="contact-modal" id="contactModal">
+        <div class="contact-box">
+            <h3>我的联系方式</h3>
+            <p>QQ:1469228736</p >
+            <p>微信:Loelin-0609</p >
+            <p>电话:15502819278</p >
+            <button class="close-btn" onclick="closeContact()">关闭</button>
+        </div>
+    </div>
+    <!-- 欢迎弹窗 -->
+    <div class="popup-mask" id="popup">
+        <div class="popup-box">
+            <div class="popup-title">您好同学</div>
+            <div class="popup-desc">欢迎来到我的个人网页</div>
+            <button class="popup-close" onclick="closePopup()">确定</button>
+        </div>
+    </div>
     <footer>© 2026 我的生活记录</footer>
     <script src="ll.js"></script>
     <script src="script.js"></script>
-
-
-<!-- 弹窗结构 -->
-<div class="popup-mask" id="popup">
-  <div class="popup-box">
-    <div class="popup-title">您好同学</div>
-    <div class="popup-desc"> 欢迎来到我的个人网页</div>
-    <button class="popup-close" onclick="closePopup()">确定</button>
-  </div>
-</div>
-
-<script>
-// 关闭弹窗
-function closePopup() {
-  document.getElementById("popup").style.display = "none";
-}
-// 页面加载自动显示
-window.onload = function() {
-  document.getElementById("popup").style.display = "flex";
-}
-</script>
-
-
+    <script>
+        // 欢迎弹窗
+        function closePopup(){document.getElementById("popup").style.display="none"}
+        window.onload=()=>{document.getElementById("popup").style.display="flex"}
+        // 联系弹窗
+        function showContact(){document.getElementById('contactModal').style.display='flex'}
+        function closeContact(){document.getElementById('contactModal').style.display='none'}
+    </script>
 </body>
 </html>
-<script>
-function showContact() {
-  document.getElementById('contactModal').style.display = 'flex';
-}
-function closeContact() {
-  document.getElementById('contactModal').style.display = 'none';
-}
-</script>
