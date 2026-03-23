@@ -6,6 +6,65 @@
     <title>我的生活记录</title>
     <style>
         
+        /* 弹幕区域：只在中间飘 */
+.barrage-area {
+  position: fixed;
+  top: 30%;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 999;
+}
+
+/* 单条留言样式 */
+.barrage-item {
+  position: absolute;
+  white-space: nowrap;
+  font-size: 17px;
+  color: #ffffff;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+  animation: barrageGo linear forwards;
+}
+
+@keyframes barrageGo {
+  from { transform: translateX(100vw); }
+  to { transform: translateX(-100%); }
+}
+
+/* 发送框 */
+.send-bar {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 400px;
+  display: flex;
+  gap: 8px;
+  background: rgba(255,255,255,0.9);
+  padding: 8px 12px;
+  border-radius: 30px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+.send-bar input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+}
+.send-bar button {
+  border: none;
+  background: #ff5c8d;
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+}
         * {
             margin: 0;
             padding: 0;
@@ -246,6 +305,8 @@
     </style>
 </head>
 <body>
+
+    
     <!-- 半透明白遮罩 -->
     <div class="page-mask"></div>
 
@@ -313,6 +374,34 @@ function closePopup() {
 // 页面加载自动显示
 window.onload = function() {
   document.getElementById("popup").style.display = "flex";
+}
+</script>
+<!-- 中间弹幕区域 -->
+<div class="barrage-area" id="barrageBox"></div>
+
+<!-- 发送框 -->
+<div class="send-bar">
+  <input type="text" id="msgText" placeholder="写下你的留言～">
+  <button onclick="sendMsg()">发送</button>
+</div>
+
+<script>
+function sendMsg() {
+  const msg = document.getElementById('msgText').value.trim();
+  if (!msg) return;
+
+  const item = document.createElement('div');
+  item.className = 'barrage-item';
+  item.textContent = msg;
+
+  // 只在中间 40% 高度内随机飘
+  item.style.top = Math.random() * 100 + '%';
+  item.style.animationDuration = 8 + Math.random() * 5 + 's';
+
+  document.getElementById('barrageBox').appendChild(item);
+  document.getElementById('msgText').value = '';
+
+  setTimeout(() => item.remove(), 15000);
 }
 </script>
 </body>
